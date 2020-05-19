@@ -37,6 +37,11 @@ let score = 0;
 
 function draw() {
     context.drawImage(ground, 0, 0)
+
+    for (let i = 0; i < snake.length; i++) {
+        context.fillStyle = (i == 0) ? "green" : "white";
+        context.fillRect(snake[i].x, snake[i].y, box, box)
+    }
 }
 
 //calling draw function every 100 ms
