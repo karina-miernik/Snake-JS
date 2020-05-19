@@ -33,6 +33,26 @@ let food = {
 
 let score = 0;
 
+//controlling snake
+
+document.addEventListener("keydown", direction);
+let d = "";
+function direction(event) {
+
+    if (event.keyCode == 37) {
+        d = "LEFT";
+    }
+    if (event.keyCode == 38) {
+        d = "RIGHT";
+    }
+    if (event.keyCode == 39) {
+        d = "UP";
+    }
+    if (event.keyCode == 40) {
+        d = "DOWN";
+    }
+}
+
 // draw everything to the canvas
 
 function draw() {
