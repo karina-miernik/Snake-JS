@@ -46,7 +46,12 @@ function draw() {
         context.strokeRect(snake[i].x, snake[i].y, box, box)
     }
 
-    context.drawImage(foodImg, food.x, food.y)
+    context.drawImage(foodImg, food.x, food.y);
+
+    context.fillStyle = "lightgreen";
+    context.font = "45px Changa one"
+    context.fillText(score, 2 * box, 1.6 * box)
+
 }
 
 //calling draw function every 100 ms
