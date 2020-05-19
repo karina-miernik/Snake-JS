@@ -71,6 +71,12 @@ function draw() {
     context.fillStyle = "lightgreen";
     context.font = "45px Changa one"
     context.fillText(score, 2 * box, 1.6 * box)
+    // old head position
+
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
+
+    //removing tail
 
 }
 
