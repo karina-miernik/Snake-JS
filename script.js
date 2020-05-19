@@ -34,21 +34,22 @@ let food = {
 let score = 0;
 
 //controlling snake
+let d;
 
 document.addEventListener("keydown", direction);
-let d = "";
-function direction(event) {
 
-    if (event.keyCode == 37) {
+function direction(event) {
+    let key = event.keyCode
+    if (key == 37) {
         d = "LEFT";
     }
-    if (event.keyCode == 38) {
+    else if (key == 38) {
         d = "RIGHT";
     }
-    if (event.keyCode == 39) {
+    else if (key == 39) {
         d = "UP";
     }
-    if (event.keyCode == 40) {
+    else if (key == 40) {
         d = "DOWN";
     }
 }
@@ -67,21 +68,41 @@ function draw() {
     }
 
     context.drawImage(foodImg, food.x, food.y);
-
-    context.fillStyle = "lightgreen";
-    context.font = "45px Changa one"
-    context.fillText(score, 2 * box, 1.6 * box)
     // old head position
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
-
     //removing tail
+    snake.pop()
+
+    //which direction
+
+    if (d == "LEFT") snakeX -= box;
+    if (d == "RIGHT") snakeX += box;
+    if (d == "UP") snakeY -= box;
+    if (d == "DOWN") snakeY += box;
+
+    // new head for snake
+
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+
+    snake.unshift(newHead)
+
+    context.fillStyle = "lightgreen";
+    context.font = "45px Changa one"
+    context.fillText(score, 2 * box, 1.6 * box);
+
+
 
 }
 
+
+
 //calling draw function every 100 ms
 
-let game = setInterval(draw, 100)
+let game = setInterval(draw, 200)
 
 
