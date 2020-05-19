@@ -40,16 +40,16 @@ document.addEventListener("keydown", direction);
 
 function direction(event) {
     let key = event.keyCode
-    if (key == 37) {
+    if (key == 37 && d != "RIGHT") {
         d = "LEFT";
     }
-    else if (key == 38) {
+    else if (key == 39 && d != "LEFT") {
         d = "RIGHT";
     }
-    else if (key == 39) {
+    else if (key == 38 && d != "DOWN") {
         d = "UP";
     }
-    else if (key == 40) {
+    else if (key == 40 && d != "UP") {
         d = "DOWN";
     }
 }
@@ -72,8 +72,6 @@ function draw() {
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
-    //removing tail
-    snake.pop()
 
     //which direction
 
@@ -81,6 +79,22 @@ function draw() {
     if (d == "RIGHT") snakeX += box;
     if (d == "UP") snakeY -= box;
     if (d == "DOWN") snakeY += box;
+
+    // if the snake eats food
+    if (snakeX == food.x && snakeY == snake.Y) {
+        score++;
+        food = {
+            x: Math.floor(Math.random() * 17 + 1) * box,
+            y: Math.floor(Math.random() * 15 + 3) * box
+        } //we dont remove the tail
+    } else {
+        //removing tail
+        snake.pop()
+
+    }
+
+
+
 
     // new head for snake
 
