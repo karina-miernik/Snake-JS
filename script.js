@@ -41,7 +41,12 @@ function draw() {
     for (let i = 0; i < snake.length; i++) {
         context.fillStyle = (i == 0) ? "green" : "white";
         context.fillRect(snake[i].x, snake[i].y, box, box)
+
+        context.strokeStyle = "mint";
+        context.strokeRect(snake[i].x, snake[i].y, box, box)
     }
+
+    context.drawImage(foodImg, food.x, food.y)
 }
 
 //calling draw function every 100 ms
