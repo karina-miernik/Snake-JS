@@ -81,12 +81,13 @@ function draw() {
     if (d == "DOWN") snakeY += box;
 
     // if the snake eats food
-    if (snakeX == food.x && snakeY == snake.Y) {
+    if (snakeX == food.x && snakeY == food.y) {
         score++;
         food = {
             x: Math.floor(Math.random() * 17 + 1) * box,
             y: Math.floor(Math.random() * 15 + 3) * box
-        } //we dont remove the tail
+        }
+        //we dont remove the tail
     } else {
         //removing tail
         snake.pop()
