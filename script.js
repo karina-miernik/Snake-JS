@@ -53,21 +53,30 @@ function direction(event) {
         d = "DOWN";
     }
 }
+// check collision function
 
+function collision(head, array)}
+for (let i = 0; i < array.length; i++) {
+    if (head.x == array[i] && head.y == array[i]) {
+        return true;
+    }
+    return false;
+}
 // draw everything to the canvas
 
 function draw() {
     context.drawImage(ground, 0, 0)
 
     for (let i = 0; i < snake.length; i++) {
-        context.fillStyle = (i == 0) ? "green" : "white";
+        context.fillStyle = (i == 0) ? "green" : "olive";
         context.fillRect(snake[i].x, snake[i].y, box, box)
 
-        context.strokeStyle = "mint";
+        context.strokeStyle = "olive";
         context.strokeRect(snake[i].x, snake[i].y, box, box)
     }
 
     context.drawImage(foodImg, food.x, food.y);
+
     // old head position
 
     let snakeX = snake[0].x;
@@ -93,16 +102,20 @@ function draw() {
         snake.pop()
 
     }
-
-
-
-
-    // new head for snake
-
     let newHead = {
         x: snakeX,
         y: snakeY
     }
+
+    //game over
+
+    if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box)
+    || collision(newHead, snake) {
+        clearInterval(game);
+    }
+    // new head for snake
+
+
 
     snake.unshift(newHead)
 
@@ -118,6 +131,6 @@ function draw() {
 
 //calling draw function every 100 ms
 
-let game = setInterval(draw, 200)
+let game = setInterval(draw, 150)
 
 
