@@ -60,15 +60,19 @@ document.addEventListener("keydown", direction);
 function direction(event) {
     let key = event.keyCode
     if (key == 37 && d != "RIGHT") {
+        left.play()
         d = "LEFT";
     }
     else if (key == 39 && d != "LEFT") {
+        right.play()
         d = "RIGHT";
     }
     else if (key == 38 && d != "DOWN") {
+        up.play()
         d = "UP";
     }
     else if (key == 40 && d != "UP") {
+        down.play()
         d = "DOWN";
     }
 }
@@ -112,6 +116,7 @@ function draw() {
     // if the snake eats food
     if (snakeX == food.x && snakeY == food.y) {
         score++;
+        eat.play()
         food = {
             x: Math.floor(Math.random() * 17 + 1) * box,
             y: Math.floor(Math.random() * 15 + 3) * box
@@ -133,6 +138,7 @@ function draw() {
         snakeY < 3 * box || snakeY > 17 * box ||
         collision(newHead, snake)) {
         clearInterval(game);
+        dead.play()
     }
     // new head for snake
     snake.unshift(newHead)
